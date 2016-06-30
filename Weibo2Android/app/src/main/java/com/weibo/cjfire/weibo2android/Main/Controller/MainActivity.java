@@ -11,6 +11,7 @@ import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
+import com.weibo.cjfire.weibo2android.Me.Manager.LoginManager;
 import com.weibo.cjfire.weibo2android.R;
 
 /**
@@ -18,22 +19,28 @@ import com.weibo.cjfire.weibo2android.R;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private LoginManager loginManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        loginManager = LoginManager(this);
     }
 
     public void authBtnDidClicked(View view) {
 
+        loginManager.auth();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
+        if (loginManager.getmSsoHandler() != null) {
+            loginManager.getmSsoHandler().authorizeCallBack(requestCode, resultCode, data);
+        }
     }
 }
 
