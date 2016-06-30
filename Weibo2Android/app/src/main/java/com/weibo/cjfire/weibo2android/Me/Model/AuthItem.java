@@ -4,10 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Printer;
-
-import com.weibo.cjfire.weibo2android.R;
 
 /**
  * Created by cjfire on 16/6/30.
@@ -23,16 +19,8 @@ public class AuthItem {
 
     private String expires;
 
-    private Context mContext;
     private SharedPreferences mSp;
     private SharedPreferences.Editor mEditor;
-
-    public void setmContext(Context mContext) {
-        this.mContext = mContext;
-
-        mSp = mContext.getSharedPreferences(AuthItem.savePath, Activity.MODE_PRIVATE);
-        mEditor = mSp.edit();
-    }
 
     public String getExpires() {
         return expires;
@@ -58,14 +46,16 @@ public class AuthItem {
         refreshToken = values.getString("refresh_token");
         accessToken = values.getString("access_token");
 
-        setmContext(context);
+        mSp = context.getSharedPreferences(AuthItem.savePath, Activity.MODE_PRIVATE);
+        mEditor = mSp.edit();
 
         save();
     }
 
     public AuthItem(Context context) {
 
-        setmContext(context);
+        mSp = context.getSharedPreferences(AuthItem.savePath, Activity.MODE_PRIVATE);
+        mEditor = mSp.edit();
 
         uid = mSp.getString("uid", "");
         userName = mSp.getString("userName", "");
