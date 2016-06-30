@@ -12,6 +12,7 @@ import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
 import com.weibo.cjfire.weibo2android.Me.Manager.LoginManager;
+import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
 import com.weibo.cjfire.weibo2android.R;
 
 /**
@@ -26,12 +27,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginManager = LoginManager(this);
+        loginManager = new LoginManager(this);
     }
 
     public void authBtnDidClicked(View view) {
 
-        loginManager.auth();
+        AuthItem authItem = new AuthItem(this);
+
+        Log.i("test", authItem.getUid());
+
+        if (authItem.getExpires().isEmpty()) {
+            loginManager.auth();
+        } else {
+            Log.i("test", authItem.getUid());
+        }
     }
 
     @Override
