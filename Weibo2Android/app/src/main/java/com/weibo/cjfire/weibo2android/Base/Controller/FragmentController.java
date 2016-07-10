@@ -25,7 +25,22 @@ public class FragmentController {
     private FragmentManager fm;
     private ArrayList<Fragment> fragments;
 
+    private Fragment currentFragment;
+
     private static FragmentController controller;
+
+    private void setCurrentFragment(Fragment currentFragment) {
+
+        FragmentTransaction ft = fm.beginTransaction();
+
+        if (this.currentFragment != null) {
+            ft.hide(this.currentFragment);
+            this.currentFragment = currentFragment;
+            ft.show(this.currentFragment);
+        }
+
+        ft.commit();
+    }
 
     public static FragmentController getInstance(FragmentActivity activity, int containerId) {
         if (controller == null) {
@@ -55,16 +70,17 @@ public class FragmentController {
 
         for(Fragment fragment : fragments) {
             ft.add(containerId, fragment);
+            ft.hide(fragment);
         }
+
+        currentFragment = fragments.get(0);
+        ft.show(currentFragment);
 
         ft.commit();
     }
 
     public void showFragment(int position) {
-        Fragment fragment = fragments.get(position);
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.show(fragment);
-        ft.commit();
+        setCurrentFragment(fragments.get(position));
     }
 
     public Fragment getFragment(int position) {
