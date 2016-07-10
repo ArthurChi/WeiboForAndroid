@@ -6,11 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.sina.weibo.sdk.auth.AuthInfo;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.auth.WeiboAuthListener;
-import com.sina.weibo.sdk.auth.sso.SsoHandler;
-import com.sina.weibo.sdk.exception.WeiboException;
 import com.weibo.cjfire.weibo2android.Me.Manager.LoginManager;
 import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
 import com.weibo.cjfire.weibo2android.R;
