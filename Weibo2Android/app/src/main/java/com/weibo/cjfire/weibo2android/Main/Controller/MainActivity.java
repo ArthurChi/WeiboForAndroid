@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 
 import com.weibo.cjfire.weibo2android.Me.Manager.LoginManager;
 import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
@@ -16,6 +17,7 @@ import com.weibo.cjfire.weibo2android.R;
 public class MainActivity extends AppCompatActivity {
 
     private LoginManager loginManager;
+    private RadioGroup bottomView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loginManager = new LoginManager(this);
+
+        setupUI();
+    }
+
+    private void setupUI() {
+
+        bottomView = (RadioGroup) findViewById(R.id.rg_tab);
     }
 
     public void authBtnDidClicked(View view) {
