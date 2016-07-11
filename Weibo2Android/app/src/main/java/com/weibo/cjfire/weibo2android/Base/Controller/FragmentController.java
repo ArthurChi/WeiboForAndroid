@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.weibo.cjfire.weibo2android.Discover.View.DiscoverFragment;
 import com.weibo.cjfire.weibo2android.Home.View.HomeFragment;
+import com.weibo.cjfire.weibo2android.Me.View.MeFragment;
 import com.weibo.cjfire.weibo2android.Message.View.MessageFragment;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class FragmentController {
         fragments.add(new HomeFragment());
         fragments.add(new MessageFragment());
         fragments.add(new DiscoverFragment());
-        fragments.add(new MessageFragment());
+        fragments.add(new MeFragment());
 
         FragmentTransaction ft = fm.beginTransaction();
 
