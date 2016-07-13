@@ -1,4 +1,4 @@
-package com.weibo.cjfire.weibo2android;
+package com.weibo.cjfire.weibo2android.WeiboAPI;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +7,9 @@ import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.exception.WeiboException;
 
+/**
+ * Created by cjfire on 16/7/13.
+ */
 class AuthListener implements WeiboAuthListener {
 
     @Override
@@ -25,7 +28,6 @@ class AuthListener implements WeiboAuthListener {
         } else {
             // 当您注册的应用程序签名不正确时，就会收到 Code，请确保签名正确
             String code = values.getString("code", "");
-
         }
     }
 

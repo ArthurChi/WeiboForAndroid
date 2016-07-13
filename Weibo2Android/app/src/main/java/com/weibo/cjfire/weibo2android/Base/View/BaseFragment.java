@@ -12,17 +12,17 @@ import com.weibo.cjfire.weibo2android.Main.Controller.MainActivity;
  */
 public class BaseFragment extends Fragment {
 
-    protected MainActivity activity;
+    protected MainActivity mActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        activity = (MainActivity) getActivity();
+        mActivity = (MainActivity) getActivity();
     }
 
     protected void intent2Activity(Class<? extends Activity> tarActivity) {
-        Intent intent = new Intent(activity, tarActivity);
+        Intent intent = new Intent(mActivity, tarActivity);
         startActivity(intent);
     }
 }

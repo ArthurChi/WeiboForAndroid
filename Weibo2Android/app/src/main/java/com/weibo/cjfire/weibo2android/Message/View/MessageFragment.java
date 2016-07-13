@@ -19,7 +19,7 @@ public class MessageFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = View.inflate(activity, R.layout.fragment_message, null);
+        view = View.inflate(mActivity, R.layout.fragment_message, null);
         return view;
     }
 }

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         addBtn.setOnClickListener(this);
     }
 
-    public void authBtnDidClicked(View view) {
+    public void auth() {
 
         AuthItem authItem = new AuthItem(this);
 

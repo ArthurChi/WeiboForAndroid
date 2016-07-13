@@ -14,12 +14,12 @@ import com.weibo.cjfire.weibo2android.R;
  */
 public class HomeFragment extends BaseFragment {
 
-    private View view;
+    private View mView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = View.inflate(activity, R.layout.fragment_home, null);
-        return view;
+        mView = View.inflate(mActivity, R.layout.fragment_home, null);
+        return mView;
     }
 }
