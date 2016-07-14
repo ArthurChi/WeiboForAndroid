@@ -17,7 +17,7 @@ import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
 
 public class LoginManager implements WeiboAuthListener {
 
-    private static final String APP_KEY = "3283806218";
+    public static final String APP_KEY = "3283806218";
     private static final String REDIRECT_URL = "https://api.weibo.com/oauth2/default.html";
     private static final String SCOPE = "all";
 
