@@ -49,15 +49,6 @@ public class LoginManager implements WeiboAuthListener {
         if (mAccessToken.isSessionValid()) {
 
             mAuthItem = new AuthItem(values, mActivity);
-
-            // 保存 Token 到 SharedPreferences
-            String uid = values.getString("uid");
-            String userName = values.getString("userName");
-            Integer expires = values.getInt("expires_in");
-            String refreshToken = values.getString("refresh_token");
-            String accessToken = values.getString("access_token");
-
-            Log.i("test", accessToken);
         } else {
             // 当您注册的应用程序签名不正确时，就会收到 Code，请确保签名正确
             String code = values.getString("code", "");
