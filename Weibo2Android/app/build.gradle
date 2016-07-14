@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('keystore.jks')
+            keyAlias 'demo'
+            keyPassword '123456'
+            storePassword '123456'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "24.0.0"
-
     defaultConfig {
         applicationId "com.weibo.cjfire.weibo2android"
         minSdkVersion 15
@@ -11,17 +18,24 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
         }
     }
 
-    sourceSets { main {
-        jni.srcDirs = ['src/main/jni', 'src/main/jni/']
-        jniLibs.srcDirs = ["src/main/jniLibs"]
-    } }
+    sourceSets {
+        main {
+            jni.srcDirs = ['src/main/jni', 'src/main/jni/']
+            jniLibs.srcDirs = ["src/main/jniLibs"]
+        }
+    }
 }
 
 dependencies {
