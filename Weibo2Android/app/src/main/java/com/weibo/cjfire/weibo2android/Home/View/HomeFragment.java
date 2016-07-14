@@ -1,6 +1,7 @@
 package com.weibo.cjfire.weibo2android.Home.View;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -30,14 +31,18 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = View.inflate(mActivity, R.layout.fragment_home, null);
 
-        init();
+//        init();
         return mView;
     }
 
     private void init() {
 
         Context context = this.getActivity().getApplicationContext();
-        AuthItem authItem = new AuthItem(context);
+
+        SharedPreferences sp = context.getSharedPreferences("DATABASE", 0);
+        String token = sp.getString("accessToken", "abc");
+        Log.i("test", token);
+//        AuthItem authItem = new AuthItem(context);
 //        Oauth2AccessToken accessToken = new Oauth2AccessToken(authItem.getAccessToken(), authItem.getExpires());
 //        statusesAPI = new StatusesAPI(context, LoginManager.APP_KEY,accessToken);
 
