@@ -2,15 +2,12 @@ package com.weibo.cjfire.weibo2android.Me.Manager;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WeiboAuthListener;
 import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
-import com.sina.weibo.sdk.net.RequestListener;
-import com.sina.weibo.sdk.openapi.StatusesAPI;
 import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
 
 /**
@@ -52,26 +49,15 @@ public class LoginManager implements WeiboAuthListener {
 
             mAuthItem = new AuthItem(values, mActivity);
 
-            Oauth2AccessToken accessToken = new Oauth2AccessToken(mAuthItem.getAccessToken(), mAuthItem.getExpires());
-            StatusesAPI statusesAPI = new StatusesAPI(mActivity, LoginManager.APP_KEY, accessToken);
-
-            statusesAPI.friendsTimeline(0, 0, 50, 1, false, 0, false, new RequestListener() {
-                @Override
-                public void onComplete(String s) {
-                    Log.i("test", s);
-                }
-
-                @Override
-                public void onWeiboException(WeiboException e) {
-
-                }
-            });
-            
         } else {
             // 当您注册的应用程序签名不正确时，就会收到 Code，请确保签名正确
             String code = values.getString("code", "");
 
         }
+    }
+
+    public void loadData() {
+
     }
 
     @Override

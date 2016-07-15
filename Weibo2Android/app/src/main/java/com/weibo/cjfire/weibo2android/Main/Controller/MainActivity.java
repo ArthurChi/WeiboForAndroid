@@ -47,12 +47,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         AuthItem authItem = new AuthItem(this);
 
-        Log.i("test", authItem.getUid());
-
         if (authItem.getExpires().isEmpty()) {
             loginManager.auth();
         } else {
-            Log.i("test", authItem.getUid());
+            loginManager.loadData();
         }
     }
 
