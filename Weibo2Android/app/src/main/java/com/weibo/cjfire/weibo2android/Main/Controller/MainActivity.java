@@ -18,6 +18,8 @@ import com.weibo.cjfire.weibo2android.R;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -53,7 +55,22 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         ReqService service = mRetrofit.create(ReqService.class);
         Call<List<Statues>> statues = service.listStatues(authItem.getAccessToken());
 
-        Log.i("test", statues.toString());
+        statues.enqueue(new Callback<List<Statues>>() {
+            @Override
+            public void onResponse(Call<List<Statues>> call, Response<List<Statues>> response) {
+
+                if (response.body() == null) {
+
+                    Log.i("test", "123");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Statues>> call, Throwable t) {
+
+            }
+        });
+
     }
 
     private void setupUI() {
