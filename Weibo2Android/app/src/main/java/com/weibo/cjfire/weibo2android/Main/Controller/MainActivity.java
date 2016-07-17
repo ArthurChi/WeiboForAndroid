@@ -9,9 +9,18 @@ import android.widget.ImageButton;
 import android.widget.RadioGroup;
 
 import com.weibo.cjfire.weibo2android.Base.Controller.FragmentController;
+import com.weibo.cjfire.weibo2android.Base.Controller.ReqService;
+import com.weibo.cjfire.weibo2android.Home.Model.Statues;
 import com.weibo.cjfire.weibo2android.Me.Manager.LoginManager;
 import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
 import com.weibo.cjfire.weibo2android.R;
+
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
+
 
 /**
  * Created by cjfire on 16/6/30.
@@ -23,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private ImageButton addBtn;
     private FragmentController controller;
 
+    public Retrofit mRetrofit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +42,18 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         loginManager = new LoginManager(this);
 
         setupUI();
+
+        mRetrofit = new Retrofit.Builder()
+                .baseUrl("https://api.weibo.com/2/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        AuthItem authItem = new AuthItem(this);
+
+        ReqService service = mRetrofit.create(ReqService.class);
+        Call<List<Statues>> statues = (Call<List<Statues>>) service.listStatues(authItem.getAccessToken());
+
+        Log.i("test", statues.toString());
     }
 
     private void setupUI() {
@@ -50,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         if (authItem.getExpires().isEmpty()) {
             loginManager.auth();
         } else {
-            loginManager.loadData();
+
         }
     }
 

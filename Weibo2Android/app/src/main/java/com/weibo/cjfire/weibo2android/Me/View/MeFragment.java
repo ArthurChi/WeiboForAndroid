@@ -19,13 +19,11 @@ public class MeFragment extends BaseFragment {
     private View mView;
     private Button nLoginBtn;
 
-    private MainActivity mActivity;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        mActivity = (MainActivity) this.getActivity();
+        final MainActivity mActivity = (MainActivity) this.getActivity();
         mView = View.inflate(this.mActivity, R.layout.fragment_me, null);
 
         nLoginBtn = (Button) mView.findViewById(R.id.loginBtn);

@@ -48,8 +48,6 @@ public class AuthItem {
 
         mSp = context.getSharedPreferences(AuthItem.savePath, Activity.MODE_PRIVATE);
         mEditor = mSp.edit();
-
-        save();
     }
 
     public AuthItem(Context context) {
@@ -64,7 +62,7 @@ public class AuthItem {
         accessToken = mSp.getString("accessToken", "");
     }
 
-    private void save() {
+    public void save() {
 
         mEditor.putString("uid", uid);
         mEditor.putString("userName", userName);
