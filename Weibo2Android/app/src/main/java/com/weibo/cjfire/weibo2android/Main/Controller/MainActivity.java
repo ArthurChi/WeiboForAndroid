@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import com.weibo.cjfire.weibo2android.Base.Controller.FragmentController;
 import com.weibo.cjfire.weibo2android.Base.Controller.ReqService;
+import com.weibo.cjfire.weibo2android.Home.Model.StatueList;
 import com.weibo.cjfire.weibo2android.Home.Model.Statues;
 import com.weibo.cjfire.weibo2android.Me.Manager.LoginManager;
 import com.weibo.cjfire.weibo2android.Me.Model.AuthItem;
@@ -17,6 +18,7 @@ import com.weibo.cjfire.weibo2android.R;
 
 import java.util.List;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     private ImageButton addBtn;
     private FragmentController controller;
 
+    public Retrofit getmRetrofit() {
+        return mRetrofit;
+    }
+
     public Retrofit mRetrofit;
 
     @Override
@@ -41,36 +47,13 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loginManager = new LoginManager(this);
-
         setupUI();
 
+        loginManager = new LoginManager(this);
         mRetrofit = new Retrofit.Builder()
                 .baseUrl("https://api.weibo.com/2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        AuthItem authItem = new AuthItem(this);
-
-        ReqService service = mRetrofit.create(ReqService.class);
-        Call<List<Statues>> statues = service.listStatues(authItem.getAccessToken());
-
-        statues.enqueue(new Callback<List<Statues>>() {
-            @Override
-            public void onResponse(Call<List<Statues>> call, Response<List<Statues>> response) {
-
-                if (response.body() == null) {
-
-                    Log.i("test", "123");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Statues>> call, Throwable t) {
-
-            }
-        });
-
     }
 
     private void setupUI() {
