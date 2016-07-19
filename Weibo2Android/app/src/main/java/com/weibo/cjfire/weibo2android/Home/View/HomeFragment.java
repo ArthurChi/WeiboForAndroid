@@ -46,7 +46,7 @@ public class HomeFragment extends BaseFragment {
 
     private void init() {
 
-        final Context context = this.getActivity().getApplicationContext();
+        final Context context = this.getActivity();
 
         MainActivity mainActivity = (MainActivity) this.getActivity();
         Retrofit retrofit = mainActivity.getmRetrofit();
@@ -55,16 +55,16 @@ public class HomeFragment extends BaseFragment {
 
         Call<StatueList> statues = service.listStatues(authItem.getAccessToken());
 
-
-
         statues.enqueue(new Callback<StatueList>() {
             @Override
             public void onResponse(Call<StatueList> call, Response<StatueList> response) {
 
-                if (response.body() != null) {
-                    List<Statues> statueList = response.body().getStatuses();
-                    mHomeAdapter = new HomeAdapter(context, R.layout.cell_home ,statueList);
-                }
+//                if (response.body() != null) {
+//                    List<Statues> statueList = response.body().getStatuses();
+//                    mHomeAdapter = new HomeAdapter(context, R.layout.cell_home ,statueList);
+//                    mStatusList.setAdapter(mHomeAdapter);
+////                    mHomeAdapter.notifyDataSetChanged();
+//                }
             }
 
             @Override
