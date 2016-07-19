@@ -34,9 +34,10 @@ public class FragmentController {
 
         if (this.currentFragment != null) {
             ft.hide(this.currentFragment);
-            this.currentFragment = currentFragment;
-            ft.show(this.currentFragment);
         }
+
+        ft.show(currentFragment);
+        this.currentFragment = currentFragment;
 
         ft.commit();
     }

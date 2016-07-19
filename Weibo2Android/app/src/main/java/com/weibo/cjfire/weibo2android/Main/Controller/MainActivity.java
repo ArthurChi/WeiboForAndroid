@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     private LoginManager loginManager;
     private RadioGroup bottomView;
+
     private ImageButton addBtn;
     private FragmentController controller;
 
@@ -58,10 +59,10 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     private void setupUI() {
 
-        bottomView = (RadioGroup) findViewById(R.id.rg_tab);
-        addBtn = (ImageButton) findViewById(R.id.iv_add);
         controller = new FragmentController(this, R.id.fl_content); //.getInstance(this, R.id.fl_content);
 
+        bottomView = (RadioGroup) findViewById(R.id.rg_tab);
+        addBtn = (ImageButton) findViewById(R.id.iv_add);
         bottomView.setOnCheckedChangeListener(this);
         addBtn.setOnClickListener(this);
     }
