@@ -11,6 +11,6 @@ import retrofit2.http.Query;
  */
 public interface ReqService {
 
-    @GET("statuses/public_timeline.json")
+    @GET("statuses/friends_timeline.json")
     Call<StatueList> listStatues(@Query("access_token") String accessToken);
 }

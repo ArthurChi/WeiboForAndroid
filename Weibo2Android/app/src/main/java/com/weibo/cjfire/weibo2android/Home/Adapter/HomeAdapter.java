@@ -65,6 +65,7 @@ public class HomeAdapter extends BaseAdapter {
         String text = statues.getText();
         holder.showText.setText(text);
         holder.mUserNickName.setText(statues.getUser().getName());
+        holder.mShowTimeSource.setText(statues.getSource());
 
         return view;
     }
@@ -72,11 +73,13 @@ public class HomeAdapter extends BaseAdapter {
     class ViewHolder {
 
         private TextView mUserNickName;
+        private TextView mShowTimeSource;
         private TextView showText;
 
         public ViewHolder(View view) {
 
             mUserNickName = (TextView) view.findViewById(R.id.cellAuthorNickname);
+            mShowTimeSource = (TextView) view.findViewById(R.id.cellAuthorTimeSource);
             showText = (TextView) view.findViewById(R.id.cellHomeText);
         }
     }
