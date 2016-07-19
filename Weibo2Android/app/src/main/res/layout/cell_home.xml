@@ -7,7 +7,10 @@
 
     <TextView
         android:id="@+id/cellHomeText"
+        style="@style/TextViewBody"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="-16dp"
+        android:padding="16dp" />
 
 </LinearLayout>

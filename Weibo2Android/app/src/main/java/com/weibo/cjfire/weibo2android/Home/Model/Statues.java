@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by cjfire on 16/7/15.
+ * Source: http://open.weibo.com/wiki/常见返回对象数据结构#.E5.BE.AE.E5.8D.9A.EF.BC.88status.EF.BC.89
  */
 public class Statues implements Serializable {
 

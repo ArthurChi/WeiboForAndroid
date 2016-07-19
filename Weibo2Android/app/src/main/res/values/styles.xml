@@ -22,7 +22,17 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@drawable/textcolor_gray2orange_sel</item>
         <item name="android:background">@color/white</item>
+    </style>
 
+    <style name="TextViewSubhead">
+
+    </style>
+
+    <style name="TextViewCaption">
+
+    </style>
+
+    <style name="TextViewBody">
 
     </style>
 
