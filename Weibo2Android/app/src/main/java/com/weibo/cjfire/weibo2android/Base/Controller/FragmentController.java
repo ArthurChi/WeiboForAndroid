@@ -28,8 +28,6 @@ public class FragmentController {
 
     private Fragment currentFragment;
 
-    private static FragmentController controller;
-
     private void setCurrentFragment(Fragment currentFragment) {
 
         FragmentTransaction ft = fm.beginTransaction();
@@ -43,20 +41,14 @@ public class FragmentController {
         ft.commit();
     }
 
-    public static FragmentController getInstance(FragmentActivity activity, int containerId) {
-        if (controller == null) {
-            controller = new FragmentController(activity, containerId);
-        }
-
-        return controller;
-    }
-
-    private FragmentController(FragmentActivity activity, int containerId) {
+    public FragmentController(FragmentActivity activity, int containerId) {
         this.containerId = containerId;
 
         fm = activity.getFragmentManager();
 
         initFragment();
+
+        setCurrentFragment(fragments.get(0));
     }
 
     private void initFragment() {
@@ -73,9 +65,6 @@ public class FragmentController {
             ft.add(containerId, fragment);
             ft.hide(fragment);
         }
-
-        currentFragment = fragments.get(0);
-        ft.show(currentFragment);
 
         ft.commit();
     }

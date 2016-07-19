@@ -68,10 +68,6 @@ public class HomeAdapter extends BaseAdapter {
 
     class ViewHolder {
 
-        public TextView getShowText() {
-            return showText;
-        }
-
         private TextView showText;
 
         public ViewHolder(View view) {

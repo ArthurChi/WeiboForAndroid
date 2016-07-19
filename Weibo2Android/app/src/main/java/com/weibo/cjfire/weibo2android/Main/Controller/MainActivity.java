@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         bottomView = (RadioGroup) findViewById(R.id.rg_tab);
         addBtn = (ImageButton) findViewById(R.id.iv_add);
-        controller = FragmentController.getInstance(this, R.id.fl_content);
+        controller = new FragmentController(this, R.id.fl_content); //.getInstance(this, R.id.fl_content);
 
         bottomView.setOnCheckedChangeListener(this);
         addBtn.setOnClickListener(this);

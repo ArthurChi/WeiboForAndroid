@@ -59,12 +59,12 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onResponse(Call<StatueList> call, Response<StatueList> response) {
 
-//                if (response.body() != null) {
-//                    List<Statues> statueList = response.body().getStatuses();
-//                    mHomeAdapter = new HomeAdapter(context, R.layout.cell_home ,statueList);
-//                    mStatusList.setAdapter(mHomeAdapter);
-////                    mHomeAdapter.notifyDataSetChanged();
-//                }
+                if (response.body() != null) {
+                    List<Statues> statueList = response.body().getStatuses();
+                    mHomeAdapter = new HomeAdapter(context, R.layout.cell_home ,statueList);
+                    mStatusList.setAdapter(mHomeAdapter);
+                    mHomeAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
