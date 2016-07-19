@@ -60,18 +60,23 @@ public class HomeAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        String text = mStatueList.get(i).getText();
+        Statues statues = mStatueList.get(i);
+
+        String text = statues.getText();
         holder.showText.setText(text);
+        holder.mUserNickName.setText(statues.getUser().getName());
 
         return view;
     }
 
     class ViewHolder {
 
+        private TextView mUserNickName;
         private TextView showText;
 
         public ViewHolder(View view) {
 
+            mUserNickName = (TextView) view.findViewById(R.id.cellAuthorNickname);
             showText = (TextView) view.findViewById(R.id.cellHomeText);
         }
     }
