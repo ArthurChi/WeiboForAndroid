@@ -15,13 +15,11 @@
 
     <include
         android:id="@+id/include_status_image"
-        layout="@layout/cell_imageshow"
-        android:visiblity="gone"/>
+        layout="@layout/cell_imageshow" />
 
     <include
         android:id="@+id/include_retweeted_status"
-        layout="@layout/cell_retweeted_status"
-        android:visiblity="gone" />
+        layout="@layout/cell_retweeted_status"/>
 
     <include
         android:id="@+id/include_bottom_control"
