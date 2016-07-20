@@ -1,6 +1,7 @@
 package com.weibo.cjfire.weibo2android.Home.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,10 @@ public class HomeAdapter extends BaseAdapter {
         holder.showText.setText(text);
         holder.mUserNickName.setText(statues.getUser().getName());
         holder.mShowTimeSource.setText(statues.getSource());
+
+        if (statues.getRetweeted_status() != null) {
+            Log.i("test", statues.getRetweeted_status().getText());
+        }
 
         return view;
     }
