@@ -16,5 +16,4 @@
         layout="@layout/cell_imageshow"
         ></include>
 
-
 </LinearLayout>

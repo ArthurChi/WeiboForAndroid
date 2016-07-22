@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.weibo.cjfire.weibo2android.Home.Model.Statues;
+import com.weibo.cjfire.weibo2android.Home.Model.User;
 import com.weibo.cjfire.weibo2android.R;
 
 import java.util.List;
@@ -62,6 +65,9 @@ public class HomeAdapter extends BaseAdapter {
         }
 
         Statues statues = mStatueList.get(i);
+        User user = statues.getUser();
+
+
 
         String text = statues.getText();
         holder.showText.setText(text);
@@ -77,12 +83,14 @@ public class HomeAdapter extends BaseAdapter {
 
     class ViewHolder {
 
+        private ImageButton mUserAvater;
         private TextView mUserNickName;
         private TextView mShowTimeSource;
         private TextView showText;
 
         public ViewHolder(View view) {
 
+            mUserAvater = (ImageButton) view.findViewById(R.id.cellAuthorAvatar);
             mUserNickName = (TextView) view.findViewById(R.id.cellAuthorNickname);
             mShowTimeSource = (TextView) view.findViewById(R.id.cellAuthorTimeSource);
             showText = (TextView) view.findViewById(R.id.cellHomeText);
