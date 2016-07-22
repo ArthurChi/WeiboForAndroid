@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.weibo.cjfire.weibo2android.Home.Model.Statues;
 import com.weibo.cjfire.weibo2android.Home.Model.User;
 import com.weibo.cjfire.weibo2android.R;
@@ -67,12 +68,12 @@ public class HomeAdapter extends BaseAdapter {
         Statues statues = mStatueList.get(i);
         User user = statues.getUser();
 
-
-
-        String text = statues.getText();
-        holder.showText.setText(text);
+        Picasso.with(mContext).load(user.getProfile_image_url()).into(holder.mUserAvatar);
         holder.mUserNickName.setText(statues.getUser().getName());
         holder.mShowTimeSource.setText(statues.getSource());
+
+        holder.showText.setText(statues.getText());
+
 
         if (statues.getRetweeted_status() != null) {
             Log.i("test", statues.getRetweeted_status().getText());
@@ -83,14 +84,14 @@ public class HomeAdapter extends BaseAdapter {
 
     class ViewHolder {
 
-        private ImageButton mUserAvater;
+        private ImageButton mUserAvatar;
         private TextView mUserNickName;
         private TextView mShowTimeSource;
         private TextView showText;
 
         public ViewHolder(View view) {
 
-            mUserAvater = (ImageButton) view.findViewById(R.id.cellAuthorAvatar);
+            mUserAvatar = (ImageButton) view.findViewById(R.id.cellAuthorAvatar);
             mUserNickName = (TextView) view.findViewById(R.id.cellAuthorNickname);
             mShowTimeSource = (TextView) view.findViewById(R.id.cellAuthorTimeSource);
             showText = (TextView) view.findViewById(R.id.cellHomeText);
