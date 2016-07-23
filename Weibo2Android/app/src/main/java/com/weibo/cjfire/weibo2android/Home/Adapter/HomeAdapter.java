@@ -106,6 +106,9 @@ public class HomeAdapter extends BaseAdapter {
             } else  {
                 mSingleImg.setVisibility(View.GONE);
                 mImgs.setVisibility(View.VISIBLE);
+
+                GridImgsAdapter gvAdapter = new GridImgsAdapter(mContext, statues.getPic_url());
+                mImgs.setAdapter(gvAdapter);
             }
 
         } else {
