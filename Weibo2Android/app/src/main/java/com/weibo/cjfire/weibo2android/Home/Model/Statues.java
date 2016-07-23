@@ -23,13 +23,13 @@ public class Statues implements Serializable {
     private User user;
     private Statues retweeted_status;
     private String thumbnail_pic;
-    private ArrayMap<String, String> pic_urls;
+    private ArrayList<String> pic_urls;
 
     public String getThumbnail_pic() {
         return thumbnail_pic;
     }
 
-    public ArrayMap<String, String> getPic_url() {
+    public ArrayList<String> getPic_url() {
         return pic_urls;
     }
 
