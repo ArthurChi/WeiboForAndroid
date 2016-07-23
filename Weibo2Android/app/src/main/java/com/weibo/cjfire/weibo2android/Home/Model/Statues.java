@@ -1,6 +1,10 @@
 package com.weibo.cjfire.weibo2android.Home.Model;
 
+import android.util.ArrayMap;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by cjfire on 16/7/15.
@@ -18,6 +22,16 @@ public class Statues implements Serializable {
     private String created_at;
     private User user;
     private Statues retweeted_status;
+    private String thumbnail_pic;
+    private ArrayMap<String, String> pic_urls;
+
+    public String getThumbnail_pic() {
+        return thumbnail_pic;
+    }
+
+    public ArrayMap<String, String> getPic_url() {
+        return pic_urls;
+    }
 
     public Statues getRetweeted_status() { return retweeted_status; }
 

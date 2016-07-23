@@ -69,7 +69,7 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<StatueList> call, Throwable t) {
-                Log.i("test_error", t.getMessage());
+
             }
         });
 
