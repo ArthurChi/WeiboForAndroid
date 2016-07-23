@@ -2,6 +2,8 @@ package com.weibo.cjfire.weibo2android.Home.Model;
 
 import android.util.ArrayMap;
 
+import com.google.gson.internal.LinkedTreeMap;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
@@ -23,13 +25,13 @@ public class Statues implements Serializable {
     private User user;
     private Statues retweeted_status;
     private String thumbnail_pic;
-    private ArrayList<String> pic_urls;
+    private ArrayList<LinkedTreeMap> pic_urls;
 
     public String getThumbnail_pic() {
         return thumbnail_pic;
     }
 
-    public ArrayList<String> getPic_url() {
+    public ArrayList<LinkedTreeMap> getPic_url() {
         return pic_urls;
     }
 

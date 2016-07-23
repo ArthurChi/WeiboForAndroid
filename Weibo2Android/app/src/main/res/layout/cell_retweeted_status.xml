@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/retweeterBg">
 
 
     <TextView
         android:id="@+id/tv_retweeted_content"
         style="@style/TextViewBody"
         android:padding="16dp"
-        android:textColor="@color/txt_gray"
-        android:visibility="gone"/>
+        android:textColor="@color/txt_gray"/>
 
     <include
         android:id="@+id/include_status_image"

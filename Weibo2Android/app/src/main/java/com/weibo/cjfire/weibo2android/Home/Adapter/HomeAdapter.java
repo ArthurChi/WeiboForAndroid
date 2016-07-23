@@ -9,8 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.internal.LinkedTreeMap;
 import com.squareup.picasso.Picasso;
 import com.weibo.cjfire.weibo2android.Home.Model.Statues;
 import com.weibo.cjfire.weibo2android.Home.Model.User;
@@ -77,20 +79,37 @@ public class HomeAdapter extends BaseAdapter {
 
         setImages(statues, holder.mImgFrameLayout, holder.mImgs, holder.mSingleImg);
 
+        Statues retweeter = statues.getRetweeted_status();
+
+        if (retweeter == null) {
+            holder.mRetweeterLayout.setVisibility(View.GONE);
+        } else {
+            holder.mRetweeterLayout.setVisibility(View.VISIBLE);
+            holder.mRetweeterTextView.setText(retweeter.getText());
+
+            setImages(retweeter, holder.mRetweeterImgFrameLayout, holder.mRetweeterImgs, holder.mRetweeterImg);
+        }
+
         return view;
     }
 
     private void setImages(Statues statues, FrameLayout mImgFrameLayout, GridViewImages mImgs, ImageView mSingleImg) {
 
-        Log.i("test1", "执行了");
-
         if (statues.getPic_url() != null) {
-            Log.i("test1", "图片不为空");
-//            for (String url : statues.getPic_ids()) {
-//                Log.i("test1", url);
-//            }
+            mImgFrameLayout.setVisibility(View.VISIBLE);
+
+            if (statues.getPic_url().size() == 1) {
+                mImgs.setVisibility(View.GONE);
+                mSingleImg.setVisibility(View.VISIBLE);
+                Picasso.with(mContext).load(statues.getPic_url().get(0).get("thumbnail_pic").toString()).into(mSingleImg);
+
+            } else  {
+                mSingleImg.setVisibility(View.GONE);
+                mImgs.setVisibility(View.VISIBLE);
+            }
+
         } else {
-            Log.i("test1", "图片为空");
+            mImgFrameLayout.setVisibility(View.GONE);
         }
     }
 
@@ -105,15 +124,29 @@ public class HomeAdapter extends BaseAdapter {
         private GridViewImages mImgs;
         private ImageView mSingleImg;
 
+        private LinearLayout mRetweeterLayout;
+        private TextView mRetweeterTextView;
+        private FrameLayout mRetweeterImgFrameLayout;
+        private GridViewImages mRetweeterImgs;
+        private ImageView mRetweeterImg;
+
         public ViewHolder(View view) {
 
             mUserAvatar = (ImageButton) view.findViewById(R.id.cellAuthorAvatar);
             mUserNickName = (TextView) view.findViewById(R.id.cellAuthorNickname);
             mShowTimeSource = (TextView) view.findViewById(R.id.cellAuthorTimeSource);
             showText = (TextView) view.findViewById(R.id.cellHomeText);
+
             mImgFrameLayout = (FrameLayout) view.findViewById(R.id.include_status_image);
             mImgs = (GridViewImages) mImgFrameLayout.findViewById(R.id.dv_images);
             mSingleImg = (ImageView) mImgFrameLayout.findViewById(R.id.cellSingleImage);
+
+            mRetweeterLayout = (LinearLayout) view.findViewById(R.id.include_retweeted_status);
+            mRetweeterTextView = (TextView) mRetweeterLayout.findViewById(R.id.tv_retweeted_content);
+
+            mRetweeterImgFrameLayout = (FrameLayout) mRetweeterLayout.findViewById(R.id.include_status_image);
+            mRetweeterImgs = (GridViewImages) mRetweeterImgFrameLayout.findViewById(R.id.dv_images);
+            mRetweeterImg = (ImageView) mRetweeterImgFrameLayout.findViewById(R.id.cellSingleImage);
         }
     }
 }
